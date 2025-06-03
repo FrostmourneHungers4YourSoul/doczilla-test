@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🌦️ Weather Forecast API</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #020817;
+            color: #f5f7f9;
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            font-size: 20px;
+            color: #f5f7f9;
+        }
+        p {
+            font-size: 9px;
+            margin: 4px 0;
+            color: #77b5f5;
+        }
+        strong {
+            font-size: 9px;
+            color: #f5f7f9;
+        }
+    </style>
+</head>
+<body>
+<h2>{{cityName}} 🌦️</h2>
+<p><strong>Температура:</strong> {{temperature}}</p>
+<p><strong>Дата и время:</strong> {{time}}</p>
+<p><strong>Широта:</strong> {{latitude}}</p>
+<p><strong>Долгота:</strong> {{longitude}}</p>
+<p><strong>Часовой пояс:</strong> {{timeZone}}</p>
+<canvas id="weatherChart" width="500" height="200"></canvas>
+<script>
+    const plugin = {
+        id: 'customCanvasBackgroundColor',
+        beforeDraw: (chart) => {
+            const ctx = chart.canvas.getContext('2d');
+            ctx.save();
+            ctx.globalCompositeOperation = 'destination-over';
+            ctx.fillStyle = '#020817';
+            ctx.fillRect(0, 0, chart.width, chart.height);
+            ctx.restore();
+        }
+    };
+
+    const ctx = document.getElementById('weatherChart').getContext('2d');
+    const weatherChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{labels}},
+            datasets: [{
+                label: 'Температура (°C)',
+                data: {{temperatures}},
+                borderColor: 'rgb(2, 91, 146)',
+                backgroundColor: 'rgb(4, 64, 102)',
+                fill: false
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Время',
+                        color: 'white',
+                        font: {
+                            size: 9
+                        }
+                    },
+                    ticks: {
+                        color: 'white',
+                        font: {
+                            size: 9
+                        }
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Температура (°C)',
+                        color: 'white',
+                        font: {
+                            size: 9
+                        }
+                    },
+                    ticks: {
+                        color: 'white',
+                        font: {
+                            size: 9
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'white',
+                        font: {
+                            size: 9
+                        }
+                    }
+                }
+            }
+        },
+        plugins: [plugin]
+    });
+</script>
+</body>
+</html>
