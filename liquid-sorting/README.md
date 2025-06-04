@@ -7,7 +7,7 @@
     Переливая жидкости между пробирками, отсортировать их так, чтобы в каждой пробирке 
     оказался только один цвет.
 
-### Сборка и запуск
+#### Сборка и запуск
   1. Клонируйте репозиторий: git clone https://github.com/FrostmourneHungers4YourSoul/doczilla-test.git
   2. Перейдите в папку: cd ~/doczilla-test/liquid-sorting
   3. Соберите и запустите проект: mvn compile exec:java -Dexec.mainClass="ru.doczilla.Main"

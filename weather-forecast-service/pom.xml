@@ -13,7 +13,6 @@
   </properties>
 
   <dependencies>
-
     <dependency>
       <groupId>com.fasterxml.jackson.datatype</groupId>
       <artifactId>jackson-datatype-jsr310</artifactId>
@@ -29,7 +28,6 @@
         <artifactId>logback-classic</artifactId>
         <version>1.5.18</version>
       </dependency>
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
